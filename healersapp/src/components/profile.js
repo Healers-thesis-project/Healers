@@ -173,7 +173,9 @@ function  Profile (props) {
                       <Typography variant="body2" color="textSecondary" component="p">
                       Bill amount:{item.amount}
                       </Typography>
+                      <img width='210px' length='200px' src={require(`./../../../server-side/public/uploads/${item.photo.slice(17)}`)}/>
                       </CardContent>
+                      
                       <CardActions disableSpacing>
                       <IconButton aria-label="share">
                       <ShareIcon />

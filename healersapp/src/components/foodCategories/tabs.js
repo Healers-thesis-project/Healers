@@ -181,6 +181,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -260,6 +261,7 @@ style={{ minHeight: '100vh' }}
                       
                       
                       <CardContent>
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       <Typography variant="body2" color="textSecondary" component="p">
                       Type Of Disease = {ele.Category}
                       </Typography>
@@ -340,6 +342,7 @@ style={{ minHeight: '100vh' }}
                       
                       <CardContent>
                       <Typography variant="body2" color="textSecondary" component="p">
+                      <img width='210px' length='200px' src={require(`./../../../../server-side/public/uploads/${ele.photo.slice(15)}`)}/>
                       Type Of Disease = {ele.Category}
                       </Typography>
                       </CardContent>
