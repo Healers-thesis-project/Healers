@@ -149,7 +149,7 @@ const storage = multer.diskStorage({
   });
   const upload = multer({
     storage: storage,
-    limits: { fileSize: 11000000 },
+    limits: { fileSize: 1100000000000000000000000000000000000 },
   }).single("myImage");
  
   users.post("/upload", function (req, res) {
@@ -209,7 +209,8 @@ const storage = multer.diskStorage({
     var str=`hospitalBill.${req.body.myData.billId}`
     
          User.findOne({id:req.body.myData.userid}).then(function(result){
-    
+            //res.send(result)
+            res.json(result)
             console.log(result.hospitalBill.splice(req.body.myData.billId,1))
             result.save()
 

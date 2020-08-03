@@ -53,6 +53,9 @@ avatar: {
 backgroundColor: red[500],
 },
 }));
+function Test(){
+  return(<h1>none</h1>)
+}
 // email: "lubnahaj45@gmail.com"
 // hospitalBill: []
 // password: "$2b$10$GwKIKP74g.Rz1MYfL206j.Dfq2G2L/G.YqP96MNvaVF5XyhdueYwW"
@@ -60,18 +63,17 @@ backgroundColor: red[500],
 // userName: "lubna"
 function MakePost(props){
     const { clases } = props;
-    console.log('./../../../server-side/public/uploads/'+props.userData.hospitalBill[0].photo.slice(7))
+   // console.log('./../../../server-side/public/uploads/'+props.userData.hospitalBill[0].photo.slice(7))
     const plzWork = '../../../server-side'
     const classes = useStyles();
+    const isThereAnyPost = props.userData.hospitalBill.length
     const [expanded, setExpanded] = React.useState(false);
     const handleExpandClick = () => {
     setExpanded(!expanded);
     };
     return (
       <div >
-    
-
-        <div id="post">{props.userData.hospitalBill.map((bill)=>(
+        <div id="post">{isThereAnyPost>0? props.userData.hospitalBill.map((bill)=>(
         <Grid 
         container
         spacing={5}
@@ -156,7 +158,7 @@ function MakePost(props){
         </Card>
         </Card>
         </Grid> 
-        </Grid>))}
+        </Grid>)):''}      
         </div>
         </div>
         );

@@ -47,39 +47,60 @@ const useStyles = makeStyles((theme) => ({
   },
   }));
 
- function handleOnclick(event){
-  event.preventDefault();
-  console.log(event.target.id)
- $.post('http://localhost:8000/delete',{myData:{billId:event.target.id,userid:localStorage.getItem('id')}})
-  .done( (result) =>{ console.log(result)
+//  function handleOnclick(event){
+//   event.preventDefault();
+//   console.log(event.target.id)
+//  $.post('http://localhost:8000/delete',{myData:{billId:event.target.id,userid:localStorage.getItem('id')}})
+//   .done( (result) =>{ console.log(result)
       
-      console.log(result)
-        //storeMe=result
-  })
-  .fail( (jqxhr, settings, ex) =>{console.log('lala') })
-}
+//       console.log(result)
+//         //storeMe=result
+//   })
+//   .fail( (jqxhr, settings, ex) =>{console.log('lala') })
+// }
 
 function  Profile (props) {
   const { clases } = props;
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [asynfunc, setAsyncfunc] = React.useState(false);
   const handleExpandClick = () => {
   setExpanded(!expanded);
   };
+  function handleOnclick(event){
+    //event.preventDefault();
+    console.log(event.target.id)
+    var x = event.target.id
+    console.log(typeof x)
+    //console.log(document.getElementById(event.target.id+1))
+ //console.log($(`#${event.target.id}`).parent().parent().parent().remove())
+
+$.post('http://localhost:8000/delete',{myData:{billId:event.target.id,userid:localStorage.getItem('id')}})
+    .done( (result) =>{ console.log(result)
+       
+        console.log('result'+JSON.stringify(result.hospitalBill))
+          //storeMe=result
+    })
+   
+    .fail( (jqxhr, settings, ex) =>{console.log('lala') })
   
-    
+}
     const [post, setpost] = useState([]);
+    const [food , setfood] = useState([]);
     const [username,setusername] = useState([]);
     useEffect(() => {
       const email = localStorage.getItem("id")
       const myData = {email:email}
+   
+
     axios
     
     .post("http://localhost:8000/mypost",myData)
 
     .then(response => {
-
+      console.log('woooork'+response.data.FoodCategories.length)
      setpost(response.data.hospitalBill)
+     setfood(response.data.FoodCategories)
      setusername(response.data.userName)
      } )}
     , [])
@@ -120,7 +141,7 @@ function  Profile (props) {
                 </div>
                 <div>
           <h4>userName:{username}</h4>
-          <h5> posts:{post.length}</h5>
+          <h5> posts:{post.length+food.length}</h5>
                 <div style={{display:"flex",justifyContent:"space-between"}}>
                   
                 </div>
@@ -134,8 +155,8 @@ function  Profile (props) {
           }}>
                     {post.map((item,index)=>(
                     
-                     
-                      <Grid
+                  
+                      <Grid id={'i'+index}
                       container
                       spacing={5}
                       direction="column"
@@ -231,7 +252,7 @@ function  Profile (props) {
                        </div>
                       </Grid> 
                       </Grid>
-                      
+                    
 
                       ))}
            
