@@ -73,7 +73,13 @@ function MakePost(props){
     };
     return (
       <div >
+
         <div id="post">{isThereAnyPost>0? props.userData.hospitalBill.map((bill)=>(
+
+   
+
+        <div id="post">{props.userData.hospitalBill.map((bill)=>(
+
         <Grid 
         container
         spacing={5}
@@ -188,6 +194,7 @@ await $.get('http://localhost:8000/mayis')
 return(
     <div>
     <AppBar position="static">
+
     <Toolbar>
       <Typography variant="h6" >
         About Us
@@ -199,6 +206,7 @@ return(
       <Button  color="inherit" to="/" component={Link}>Logout</Button>
     </Toolbar>
   </AppBar>
+
     {bill.map((user,index)=>(<MakePost key={index}  userData={user} />))}
     </div>
 )
